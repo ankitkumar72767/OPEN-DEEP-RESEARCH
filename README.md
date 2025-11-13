@@ -1,168 +1,172 @@
 # 🔎 OpenDeepResearcher — Agentic AI Research Assistant (Streamlit Edition)
 
-OpenDeepResearcher is an AI-powered research tool that behaves like a human researcher.
-Give it a topic → it plans, searches, analyzes, and generates a structured research report automatically.
+OpenDeepResearcher is an AI-powered research system that works like a human researcher.  
+You provide a topic → the system automatically **plans**, **searches**, **analyzes**, and **writes** a structured research report using multi-agent AI workflows.
 
-✅ Planner Agent  
-✅ Web Search Agent (Tavily)  
-✅ Writer Agent (LLM)  
-✅ History & Memory  
-✅ Beautiful Streamlit UI  
-✅ Markdown / JSON / PDF export
+It includes:
 
----
+ ⭐ Planner Agent  
+ ⭐ Web Search Agent (Tavily)  
+ ⭐ Writer Agent (LLM)  
+ ⭐ Session History & Memory  
+ ⭐ Streamlit UI  
+ ⭐ Multi-format export (Markdown / JSON / PDF)
 
-## ✅ Key Features
 
-- ✅ **Planner Agent** – breaks your topic into smart sub-questions  
-- ✅ **Searcher Agent (Tavily API)** – retrieves fresh data from the web  
-- ✅ **Writer Agent (LLM)** – writes short or long academic-style reports  
-- ✅ **Supports Local Models** – LM Studio / Ollama / OpenAI-compatible APIs  
-- ✅ **Session Memory** – saves previous research runs  
-- ✅ **Downloads** – Markdown, JSON, PDF  
-- ✅ **Clean, modern UI with animations**
 
----
+##  Key Features
 
-## ✅ Tech Used
+### 🔹 Planner Agent  
+Breaks your topic into well-structured sub-questions.
+
+### 🔹 Searcher Agent (Tavily)
+Fetches real-time web information including:
+- URLs  
+- Titles  
+- Summaries  
+- Timestamps  
+
+### 🔹 Writer Agent (LLM)
+Generates:
+- Short summaries  
+- Long academic-style reports  
+- Multi-language output  
+
+Supports:
+-  LM Studio  
+-  Ollama  
+-  OpenAI-compatible APIs  
+
+### 🔹 Streamlit UI
+Modern UI with:
+- Glassmorphism design  
+- Neon gradient buttons  
+- Sidebar configuration  
+- Clean report viewer  
+- Session history  
+
+### 🔹 Export Options
+Download results as:
+- 📄 Markdown  
+- 📄 JSON  
+- 📄 PDF  
+
+
+
+## 🧠 Tech Stack
 
 | Component | Technology |
-|-----------|------------|
+|----------|------------|
 | Frontend UI | Streamlit |
-| LLM Framework | LangChain / LangGraph |
-| Web Search | Tavily API |
-| Local LLM | LM Studio / Ollama |
-| Language | Python 3.9+ |
+| LLM Workflow | LangGraph |
+| LLM Integration | LangChain |
+| Web Search API | Tavily |
+| Local LLM Support | LM Studio / Ollama |
+| Language | Python 3.10+ |
 
----
 
-## ✅ Folder Structure
 
-OpenDeepResearcher/
-│
-├── app.py # Streamlit UI
-├── backend/
-│ ├── graph.py # Research flow (Planner → Search → Writer)
-│ ├── memory.py # Session memory tracking
-│ ├── agents/
-│ │ ├── planner.py
-│ │ ├── searcher.py
-│ │ └── writer.py
-│ └── utils/
-│ └── citations.py
-├── requirements.txt
-└── README.md
+## 📁 Folder Structure
 
-yaml
-Copy code
 
----
 
-## ✅ Installation
+<img width="468" height="393" alt="image" src="https://github.com/user-attachments/assets/a065c418-9dd3-420a-8d96-63c1b49dd78d" />
+
+## ⚙️ Installation Guide
 
 ### 1️⃣ Create Virtual Environment
-```bash
+
+
+
+## ⚙️ Installation Guide
+
+### 1️⃣ Create Virtual Environment
 python -m venv .venv
-Activate:
 
-Windows
 
-bash
-Copy code
+Activate environment:
+
+**Windows**
 .venv\Scripts\activate
-Linux / Mac
 
-bash
-Copy code
+
+**Mac/Linux**
 source .venv/bin/activate
-2️⃣ Install Dependencies
-bash
-Copy code
-pip install -r requirements.txt
-3️⃣ Add Environment Variables
-You can set them in the terminal or inside .env:
 
-ini
-Copy code
-TAVILY_API_KEY=your_key_here
+
+### 2️⃣ Install Dependencies
+pip install -r requirements.txt
+
+
+
+### 3️⃣ Add Environment Variables
+
+Create a `.env` file:
+
+TAVILY_API_KEY=your_tavily_key
 OPENAI_API_BASE=http://127.0.0.1:1234/v1
 OPENAI_API_KEY=test
-For LM Studio / local models, OPENAI_API_KEY can be any placeholder string.
 
-4️⃣ Run the App
-bash
-Copy code
+
+### 4️⃣ Run the App
+
 streamlit run app.py
-Then open browser at:
 
-arduino
-Copy code
+
+Open:
 http://localhost:8501
-✅ How It Works
-You enter a topic
 
-Planner Agent creates sub-questions
 
-Searcher Agent fetches articles with URLs and timestamps
 
-Writer Agent generates a clean research report
+## 🧩 How It Works
 
-You can download the output
+1. User enters a topic  
+2. Planner Agent generates sub-questions  
+3. Searcher Agent fetches fresh online data  
+4. Writer Agent synthesizes the content  
+5. UI displays structured final report  
+6. User downloads output in 3 formats  
 
-✅ Example Output
-✔ Research plan
-✔ Short or long academic report
-✔ References list
-✔ Useful for projects, assignments, and analysis
 
-✅ Example Topics
-Future of AI in Healthcare
 
-Impact of Climate Change
+## 📄 Example Topics
 
-Cybersecurity Trends
+- AI in Healthcare  
+- Climate Change  
+- Cybersecurity Trends  
+- Electric Vehicles  
+- Blockchain / Web 3.0  
 
-Electric Vehicles in India
 
-Web 3.0 and Blockchain
+##  Current Project Status
 
-✅ Current Status
-✔ Fully working
-✔ UI completed
-✔ Works with LM Studio & Tavily
-✔ Download options active
-✔ Multi-language support
+-  Fully functional  
+-   Multi-agent pipeline complete  
+-  Tavily + LM Studio integrated  
+-  UI finished  
+-  History working  
+-  Multi-language supported  
+-  PDF / JSON / Markdown export  
 
-✅ Future Improvements
-Better citation formatting (APA / IEEE)
 
-PowerPoint export
 
-More visual charts & graphs
+## 🔮 Future Improvements
 
-👨‍💻 Author
-Ankit Kumar (CS-AIML)
-A complete agentic LLM research system with UI, memory, and multi-agent workflow.
+- APA / IEEE citations  
+- PPT export  
+- Charts & graphs  
+- Voice input  
+- Audio summary  
 
-✅ License
-Free to use, modify, and improve.
 
-⭐ If you like this project, feel free to fork or star ⭐
 
-yaml
-Copy code
+## 👨‍💻 Author
 
----
+**Ankit Kumar – CS-AIML**  
+Developer of OpenDeepResearcher – a full agentic LLM research system.
 
-✅ This README looks **professional, internship-ready, GitHub perfect**  
-✅ No grammar mistakes  
-✅ Clear, structured, modern formatting
+GitHub: https://github.com/ankitkumar72767  
 
-If you want, I can also create:
 
-✅ GitHub project description  
-✅ Project logo banner  
-✅ Demo screenshots section  
-✅ Badge icons (Python / Streamlit / LM Studio)
-
-Would you like those added?
+## ⭐ Support  
+If you like this project, please ⭐ star the repository!
