@@ -10,7 +10,7 @@ from backend.utils.citations import flatten_references
 load_dotenv()
 
 # -------------------------------------------------------
-# ✅ PAGE CONFIG
+#  PAGE CONFIG
 # -------------------------------------------------------
 st.set_page_config(
     page_title="OpenDeepResearcher",
@@ -19,7 +19,7 @@ st.set_page_config(
 )
 
 # -------------------------------------------------------
-# ✅ PREMIUM UI + CLEAN CSS
+#  UI +  CSS
 # -------------------------------------------------------
 st.markdown("""
 <style>
@@ -88,12 +88,12 @@ textarea:hover, input:hover {
 """, unsafe_allow_html=True)
 
 # -------------------------------------------------------
-# ✅ NAVBAR
+#  NAVBAR
 # -------------------------------------------------------
 st.markdown("<div class='navbar'>🔎 OpenDeepResearcher — AI Agentic Research Assistant</div>", unsafe_allow_html=True)
 
 # -------------------------------------------------------
-# ✅ SIDEBAR CONFIG
+# SIDEBAR CONFIG
 # -------------------------------------------------------
 with st.sidebar:
     st.title("⚙️ Configuration")
@@ -113,20 +113,20 @@ with st.sidebar:
     dl_format = st.selectbox("Download report", ["Markdown (.md)", "JSON (.json)", "PDF (.pdf)"])
 
 # -------------------------------------------------------
-# ✅ INPUT
+#  INPUT
 # -------------------------------------------------------
 topic = st.text_area("Enter your research topic", height=100)
 
 col1, col2 = st.columns([1,1])
-run_click = col1.button("🚀 Run Research", use_container_width=True)
-clear_click = col2.button("🧹 Clear History", use_container_width=True)
+run_click = col1.button(" Run Research", use_container_width=True)
+clear_click = col2.button(" Clear History", use_container_width=True)
 
 if clear_click:
     st.session_state["history"] = []
-    st.toast("✅ History cleared")
+    st.toast(" History cleared")
 
 # -------------------------------------------------------
-# ✅ VALIDATION
+#  VALIDATION
 # -------------------------------------------------------
 def validate():
     if not topic.strip(): return "Topic required"
@@ -135,7 +135,7 @@ def validate():
     return None
 
 # -------------------------------------------------------
-# ✅ RUN PIPELINE
+#  RUN PIPELINE
 # -------------------------------------------------------
 if run_click:
     err = validate()
@@ -157,16 +157,16 @@ if run_click:
                 report_mode="long" if mode == "Long Academic Report" else "short"
             )
 
-        # ✅ Display output
-        st.success("✅ Research Completed!")
-        st.subheader("🧭 Research Plan")
+        #  Display output
+        st.success(" Research Completed!")
+        st.subheader(" Research Plan")
         st.code(result["plan"])
 
         st.subheader("📄 Final Report")
         st.markdown(f"<div class='report-box'>{result['report'].replace(chr(10), '<br>')}</div>",
                     unsafe_allow_html=True)
 
-        # ✅ Prepare references & downloads
+        #  Prepare references & downloads
         refs = flatten_references(result["qa_blocks"])
         md_report = f"# {topic}\n\n## Introduction\n{result['report']}\n\n## References:\n"
         for r in refs:
@@ -179,7 +179,7 @@ if run_click:
             "references": refs
         }
 
-        # ✅ PDF export
+        #  PDF export
         def export_pdf(text):
             pdf = FPDF()
             pdf.add_page()
@@ -188,7 +188,7 @@ if run_click:
                 pdf.multi_cell(0, 7, line)
             return pdf.output(dest="S").encode("latin-1")
 
-        st.markdown("### 📥 Download")
+        st.markdown("###  Download")
         if dl_format.startswith("Markdown"):
             st.download_button("⬇️ Markdown", md_report, "report.md")
         elif dl_format.startswith("JSON"):
@@ -196,13 +196,13 @@ if run_click:
         elif dl_format.startswith("PDF"):
             st.download_button("⬇️ PDF", export_pdf(result["report"]), "report.pdf")
 
-        # ✅ Save history
+        #  Save history
         if "history" not in st.session_state:
             st.session_state["history"] = []
         st.session_state["history"].append({"topic": topic, "report": result["report"]})
 
 # -------------------------------------------------------
-# ✅ HISTORY
+# HISTORY
 # -------------------------------------------------------
 st.markdown("---")
 st.subheader("📁 Previous Sessions")
